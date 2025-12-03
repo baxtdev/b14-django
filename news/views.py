@@ -1,10 +1,11 @@
 from django.shortcuts import render
 
+from .models import News
+
 # Create your views here.
 def main_page(request):
-    user_data = {
-        'name':'John',
-        'age':28,
-        'is_merried':False
+    news = News.objects.all()
+    context = {
+        'news':news
     }
-    return render(request=request,template_name='news/index.html',context=user_data)
+    return render(request=request,template_name='news/index.html',context=context)
